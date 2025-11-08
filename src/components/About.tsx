@@ -18,11 +18,11 @@ export function About() {
             </div>
             <div className="flex-1 space-y-5">
               <p className="leading-relaxed">
-                テキスタイル、ウェブデザイン、フォトグラフィーを中心に制作しています。
+                テキスタイルデザイン、ウェブデザイン、写真撮影、動画編集などを中心に制作しています。
                 デザインを通じて、新しい価値と体験を創造することを目指しています。
               </p>
               <p className="leading-relaxed">
-                各分野で培った技術と感性を組み合わせ、ユニークで魅力的な作品を制作しています。
+                各分野で培った技術と感性を組み合わせ、作品を制作しています。
                 お気軽にお問い合わせください。
               </p>
               <div className="pt-3 border-t border-gray-200">
