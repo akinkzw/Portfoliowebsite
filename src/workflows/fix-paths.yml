@@ -1,0 +1,30 @@
+name: Fix Paths for Vercel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  fix-paths:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fix index.html path
+        run: |
+          sed -i 's|src="/main.tsx"|src="/src/main.tsx"|g' index.html
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-fix: Update main.tsx path for Vercel"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
