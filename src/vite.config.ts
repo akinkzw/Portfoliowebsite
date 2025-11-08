@@ -4,12 +4,10 @@ import path from 'path';
 
 // Vite configuration for production build
 export default defineConfig({
-  root: './',
-  publicDir: 'public',
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './'),
     },
   },
   build: {
