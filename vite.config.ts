@@ -56,13 +56,5 @@
     server: {
       port: 3000,
       open: true,
-      server: {
-  port: 8080,
-  host: true,
-},
-build: {
-  outDir: 'dist',
-  sourcemap: false,
-},
     },
   });
