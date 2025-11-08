@@ -436,9 +436,20 @@
     line-height: 1.5;
   }
 
-  label, button {
+  label {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
     line-height: 1.5;
   }
 
