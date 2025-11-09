@@ -1,19 +1,3 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import { HomePage } from './pages/HomePage';
-import { CategoryPage } from './pages/CategoryPage';
-import { PasswordProtection } from './components/PasswordProtection';
-import { ScrollToTop } from './components/ScrollToTop';
-
-export default function App() {
-  return (
-    <PasswordProtection>
-      <HashRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/category/:slug" element={<CategoryPage />} />
-        </Routes>
-      </HashRouter>
-    </PasswordProtection>
-  );
-}
+// This file is a system-protected duplicate created by Figma Make.
+// It re-exports the actual App component from /src/App.tsx
+export { default } from './src/App';
