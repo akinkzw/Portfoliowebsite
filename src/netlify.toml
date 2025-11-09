@@ -1,0 +1,44 @@
+[build]
+  # ビルドコマンド
+  command = "npm run build"
+  
+  # 公開ディレクトリ（Viteのデフォルト出力先）
+  publish = "dist"
+  
+  # Node.jsのバージョン
+  node_bundler = "esbuild"
+
+# 環境変数（Netlify UIで設定する変数のプレースホルダー）
+[build.environment]
+  NODE_VERSION = "18"
+
+# SPAのためのリダイレクト設定（HashRouterを使用しているため、実際には不要だが念のため）
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# ヘッダー設定（セキュリティとキャッシュ）
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
