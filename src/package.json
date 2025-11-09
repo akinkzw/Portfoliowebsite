@@ -15,7 +15,8 @@
     "microcms-js-sdk": "^3.1.2",
     "motion": "^10.16.2",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
@@ -23,7 +24,6 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "typescript": "^5.5.3",
-    "vite": "^5.3.4",
-    "tailwindcss": "^4.0.0"
+    "vite": "^5.3.4"
   }
 }
