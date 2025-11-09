@@ -1,6 +1,6 @@
 [build]
-  # ビルドコマンド
-  command = "npm run build"
+  # ビルドコマンド（legacy-peer-depsを使用）
+  command = "npm install --legacy-peer-deps && npm run build"
   
   # 公開ディレクトリ（Viteのデフォルト出力先）
   publish = "dist"
