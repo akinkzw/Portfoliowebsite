@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="fishGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 魚の体 -->
+  <ellipse cx="36" cy="32" rx="22" ry="14" fill="url(#fishGradient)"/>
+  
+  <!-- 尾びれ -->
+  <path d="M 14 32 Q 8 24 4 20 Q 8 28 8 32 Q 8 36 4 44 Q 8 40 14 32 Z" fill="url(#fishGradient)"/>
+  
+  <!-- 背びれ -->
+  <path d="M 38 18 Q 42 12 44 10 Q 42 16 40 18 Z" fill="#357ABD"/>
+  
+  <!-- 腹びれ -->
+  <path d="M 30 42 Q 28 48 26 50 Q 28 46 30 44 Z" fill="#357ABD"/>
+  
+  <!-- 目 -->
+  <circle cx="48" cy="28" r="3" fill="white"/>
+  <circle cx="49" cy="27.5" r="1.5" fill="#1a1a1a"/>
+  
+  <!-- ハイライト -->
+  <ellipse cx="40" cy="26" rx="8" ry="4" fill="white" opacity="0.3"/>
+</svg>
