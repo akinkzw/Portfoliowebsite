@@ -6,7 +6,7 @@ export function Contact() {
       <div className="max-w-4xl mx-auto">
         <h2 className="mb-12 text-center section-title font-thin" style={{ fontFamily: '"Josefin Sans", sans-serif', fontWeight: 100 }}>Contact</h2>
         <div className="bg-white rounded-2xl shadow-lg p-10 text-center space-y-8">
-          <p className="text-lg">
+          <p style={{ fontSize: '15px' }}>
             お問い合わせは以下からお気軽にご連絡ください。
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-4">

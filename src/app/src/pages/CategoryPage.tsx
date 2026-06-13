@@ -328,12 +328,18 @@ export function CategoryPage() {
                   imageUrls={work.imageUrls}
                   aspectRatio={work.aspectRatio}
                   externalLink={work.externalLink}
-                  cardAspectRatio={work.title.toLowerCase().includes('fortune cookie') ? 'wide' : 'square'}
+                  cardAspectRatio={work.title.toLowerCase().includes('fortune cookie') || work.title.toLowerCase().includes('weather') ? 'wide' : 'square'}
                   modalText={work.title.toLowerCase().includes('fortune cookie') ? (
                     <>
                       <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">占いやメッセージが記載されたフォーチュンクッキーをアプリにて制作。 手軽に手元のスマフォ・デスクトップで今日の占い・運を楽しむことを目的に設計。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">様々な占いアプリを検証。実際に試した中で、よりシンプルで簡素な操作性のあるUIが適切と判断。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">使用したAPI：</span><br /><span className="font-normal text-gray-500">特になし。自身で名言や諺などを調べて、一つずつ選定して設置。</span></p>
+                    </>
+                  ) : work.title.toLowerCase().includes('weather') ? (
+                    <>
+                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">手軽に都市名を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行なった。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">使用したAPI：</span><br /><span className="font-normal text-gray-500">・Open-MeteoのGeocoding API<br />・国土地理院のジオコーディングAPI</span></p>
                     </>
                   ) : undefined}
                 />

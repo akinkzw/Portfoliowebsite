@@ -2,8 +2,10 @@ import { Header } from '../components/Header';
 import { About } from '../components/About';
 import { Categories } from '../components/Categories';
 import { Contact } from '../components/Contact';
+import { MyShop } from '../components/MyShop';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ScrollToTop } from '../components/ScrollToTop';
+import { Footer } from '../components/Footer';
 
 export function HomePage() {
   return (
@@ -40,14 +42,10 @@ export function HomePage() {
 
       <About />
       <Categories />
+      <MyShop />
       <Contact />
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-200">
-        <div className="max-w-6xl mx-auto text-center text-gray-600">
-          <p>© 2026 Portfolio. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

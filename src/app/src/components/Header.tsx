@@ -51,7 +51,15 @@ export function Header() {
               </button>
             </li>
             <li>
-              <button 
+              <button
+                onClick={() => scrollToSection('myshop')}
+                className="hover:opacity-70 transition-opacity"
+              >
+                My Shop
+              </button>
+            </li>
+            <li>
+              <button
                 onClick={() => scrollToSection('contact')}
                 className="hover:opacity-70 transition-opacity"
               >

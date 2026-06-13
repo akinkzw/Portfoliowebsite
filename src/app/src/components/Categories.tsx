@@ -122,14 +122,24 @@ export function Categories() {
                             <>
                               <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">釣り人は釣行時の天気や川の水位を気にする習慣があります。釣り人達にとって、釣行時に天気と水位が分かるアプリがあるとより有意義な釣行ができるのではと思ったことがきっかけで制作しました。</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">既に公開されている他社アプリを検証。総合的に不足してい要素を付与。</span></div>
-                              <div className="mt-3"><span className="!font-bold text-gray-800">苦労した点・改良した点：</span><br /><span className="!font-normal text-gray-500">全国の河川の名称をデータベースから収集する為に国土交通データプラットフォームAPIから抽出するまで成功。ここからリアルタイムの水位・水量までを取得することが個人レベルで行うことが困難であることが判明。ここから、このアプリをどう改善すべきかを考察し、各河川の前後3日間の天気のみをリアルタイムに取得する点に切り替えてUIデザインを構築。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">工夫した点：</span><br /><span className="!font-normal text-gray-500">全国の河川の名称をデータベースから収集する為に国土交通データプラットフォームAPIから抽出。各河川のデータ（川名、都道府県、水系名など）を基に、より正確なライブカメラの個別ページ、または該当地域のカメラ一覧ページへと正しく遷移できるようにURLの生成ロジック（スクレイピングやAPI呼び出し・検索URLの組み立て）を工夫。各河川の前後3日間の天気のみをリアルタイムに取得する点に切り替えてUIデザインを構築。</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">使用したAPI：</span></div>
                               <div className="!font-normal text-gray-500">・国土交通データプラットフォーム API</div>
                               <div className="!font-normal text-gray-500">・Open Weather API</div>
                             </>
                           )
-                          : undefined, // anglers作品のみコーディオンを表示
-                        titleClassName: w.title.toLowerCase().includes('anglers')
+                          : w.title.toLowerCase().includes('weather')
+                          ? (
+                            <>
+                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">手軽に都市名を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行なった。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">使用したAPI：</span></div>
+                              <div className="!font-normal text-gray-500">・Open-MeteoのGeocoding API</div>
+                              <div className="!font-normal text-gray-500">・国土地理院のジオコーディングAPI</div>
+                            </>
+                          )
+                          : undefined,
+                        titleClassName: w.title.toLowerCase().includes('anglers') || w.title.toLowerCase().includes('weather')
                           ? 'underline decoration-[1px] underline-offset-4'
                           : undefined,
                       };
