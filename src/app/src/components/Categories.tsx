@@ -85,9 +85,9 @@ export function Categories() {
         // 各カテゴリのデータを並列で取得
         const [webWorks, textileWorks, photoWorks] =
           await Promise.all([
-            getWorksByCategory("web", 1),
-            getWorksByCategory("textile", 1),
-            getWorksByCategory("photo", 1),
+            getWorksByCategory("web", 3),
+            getWorksByCategory("textile", 3),
+            getWorksByCategory("photo", 3),
           ]);
 
         setDebugInfo(
@@ -243,7 +243,7 @@ export function Categories() {
           </div>
         )} */}
 
-        <div className="space-y-24">
+        <div className="space-y-20">
           {categories.map((category) => (
             <div key={category.title}>
               <div className="flex items-center gap-4 mb-10">
@@ -252,7 +252,7 @@ export function Categories() {
                   <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-gray-800 to-gray-400"></span>
                 </h3>
               </div>
-              <div className="grid grid-cols-1 gap-8 mb-8 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 {category.works.map((work, index) => (
                   <WorkCard
                     key={index}
