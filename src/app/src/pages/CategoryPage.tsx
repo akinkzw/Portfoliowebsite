@@ -129,12 +129,7 @@ export function CategoryPage() {
             slug === 'photo' ? 'photo' : 
             'square';
           
-          // Webカテゴリでは「River weather forecast for anglers」をカテゴリ詳細から除外（TOPページにのみ表示）
-          const filteredMicroCMSWorks = slug === 'web'
-            ? microCMSWorks.filter(w => !w.title.toLowerCase().includes('anglers'))
-            : microCMSWorks;
-
-          const mappedWorks = filteredMicroCMSWorks.map(w => {
+          const mappedWorks = microCMSWorks.map(w => {
             console.log(`🔍 Work: ${w.title}, aspectRatio from API:`, w.aspectRatio);
             return {
               title: w.title,
@@ -328,8 +323,16 @@ export function CategoryPage() {
                   imageUrls={work.imageUrls}
                   aspectRatio={work.aspectRatio}
                   externalLink={work.externalLink}
-                  cardAspectRatio={work.title.toLowerCase().includes('fortune cookie') || work.title.toLowerCase().includes('weather') ? 'wide' : 'square'}
-                  modalText={work.title.toLowerCase().includes('fortune cookie') ? (
+                  cardAspectRatio={work.title.toLowerCase().includes('fortune cookie') || work.title.toLowerCase().includes('weather') || work.title.toLowerCase().includes('e-commerce') || work.title.toLowerCase().includes('anglers') ? 'wide' : 'square'}
+                  modalText={work.title.toLowerCase().includes('anglers') ? (
+                    <>
+                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">手軽に川の名称を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。私自身が渓流を行うため、川ごとの天気やライブカメラが手元で分かるアプリを作成したいと思い、制作しました。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">Supabase の Magic Link 認証とお気に入り機能を実装し、ユーザーが普段通う河川を保存して次回すぐ確認できるようにしました。外部 API の呼び出しは Supabase Edge Functions 側にまとめ、API キーをクライアントに露出させない構成にしています。RLS ポリシーを設定し、お気に入りデータが他ユーザーから参照されないようにしました。WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行ないました。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">使用技術：</span><br /><span className="font-normal text-gray-500">React 18 / TypeScript / Vite / Tailwind CSS v4 / Supabase（PostgreSQL・認証・Edge Functions）/ Python（河川座標データの整形）</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">使用したAPI：</span><br /><span className="font-normal text-gray-500">・国土交通データプラットフォーム API<br />・川の防災情報（河川水位データ）<br />・Open-Meteo / OpenWeather / WeatherAPI</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">サイト：</span><br /><a href="https://weather-for-anglers.netlify.app/" target="_blank" rel="noopener noreferrer" className="font-normal text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors">https://weather-for-anglers.netlify.app/</a></p>
+                    </>
+                  ) : work.title.toLowerCase().includes('fortune cookie') ? (
                     <>
                       <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">占いやメッセージが記載されたフォーチュンクッキーをアプリにて制作。 手軽に手元のスマフォ・デスクトップで今日の占い・運を楽しむことを目的に設計。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">様々な占いアプリを検証。実際に試した中で、よりシンプルで簡素な操作性のあるUIが適切と判断。</span></p>
@@ -337,9 +340,18 @@ export function CategoryPage() {
                     </>
                   ) : work.title.toLowerCase().includes('weather') ? (
                     <>
-                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">手軽に都市名を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。</span></p>
+                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">手軽に川の名称を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。私自身が渓流を行うため、川ごとの天気やライブカメラが手元で分かるアプリを作成したいと思い、制作。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行なった。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">使用したAPI：</span><br /><span className="font-normal text-gray-500">・Open-MeteoのGeocoding API<br />・国土地理院のジオコーディングAPI</span></p>
+                    </>
+                  ) : work.title.toLowerCase().includes('e-commerce') ? (
+                    <>
+                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">アパレル・ライフスタイルブランド「めるげん//賢志」様からのご依頼で、ShopifyによるECサイトを実装しました。衣類とライフプロダクトの2カテゴリに加え、ブランドの世界観を伝える読み物コンテンツ（Journal）を持つ構成で、多言語・多通貨での販売にも対応しています。既存テーマの標準レイアウトでは表現しきれないブランド表現の部分を、Liquidのカスタマイズで実現することを目的としました。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">同ジャンルのアパレルECを複数調査し、商品一覧・商品詳細・読み物コンテンツへの導線を比較。依頼主の要望と既存テーマの標準機能との差分を洗い出し、テーマの標準機能で満たせる範囲（商品管理、絞り込み、決済、多通貨対応）と、独自実装が必要な範囲（トップページとJournalのビジュアル構成）を切り分けた上で着手しました。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">苦労した点：</span><br /><span className="font-normal text-gray-500">トップページとJournalの記事内で、画像・動画が規則的なグリッドに収まらない配置を求められた点です。段組みが記事ごとに変わり、動画と画像が混在するため、既存テーマのセクションをそのまま使うことができませんでした。さらにPCとスマートフォンで意図した見え方を保つ必要があり、ブレイクポイントごとに要素の並び順とアスペクト比を制御するレスポンシブ調整に最も時間を要しました。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">工夫した点：</span><br /><span className="font-normal text-gray-500">不規則な配置をその場限りのハードコーディングで終わらせず、Liquidのセクション／ブロックschemaを設計し、管理画面から画像・動画の差し替えや並び替えができる形で実装しました。レイアウトはCSS Gridで組み、SP表示では並び順を再定義することで、どの構成でも崩れない実装にしました。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">使用技術：</span><br /><span className="font-normal text-gray-500">Shopify / Liquid / HTML / CSS（Grid・Flexbox）/ JavaScript</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">サイト：</span><br /><a href="https://www.mergenkenji.com/" target="_blank" rel="noopener noreferrer" className="font-normal text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors">https://www.mergenkenji.com/</a></p>
                     </>
                   ) : undefined}
                 />

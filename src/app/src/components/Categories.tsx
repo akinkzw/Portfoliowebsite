@@ -120,18 +120,20 @@ export function Categories() {
                         accordionText: w.title.toLowerCase().includes('anglers')
                           ? (
                             <>
-                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">釣り人は釣行時の天気や川の水位を気にする習慣があります。釣り人達にとって、釣行時に天気と水位が分かるアプリがあるとより有意義な釣行ができるのではと思ったことがきっかけで制作しました。</span></div>
-                              <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">既に公開されている他社アプリを検証。総合的に不足している要素を付与。</span></div>
-                              <div className="mt-3"><span className="!font-bold text-gray-800">工夫した点：</span><br /><span className="!font-normal text-gray-500">全国の河川の名称をデータベースから収集する為に国土交通データプラットフォームAPIから抽出。各河川のデータ（川名、都道府県、水系名など）を基に、より正確なライブカメラの個別ページ、または該当地域のカメラ一覧ページへと正しく遷移できるようにURLの生成ロジック（スクレイピングやAPI呼び出し・検索URLの組み立て）を工夫。各河川の前後3日間の天気のみをリアルタイムに取得する点に切り替えてUIデザインを構築。</span></div>
+                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">手軽に川の名称を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。私自身が渓流を行うため、川ごとの天気やライブカメラが手元で分かるアプリを作成したいと思い、制作しました。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">Supabase の Magic Link 認証とお気に入り機能を実装し、ユーザーが普段通う河川を保存して次回すぐ確認できるようにしました。外部 API の呼び出しは Supabase Edge Functions 側にまとめ、API キーをクライアントに露出させない構成にしています。RLS ポリシーを設定し、お気に入りデータが他ユーザーから参照されないようにしました。WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行ないました。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">使用技術：</span><br /><span className="!font-normal text-gray-500">React 18 / TypeScript / Vite / Tailwind CSS v4 / Supabase（PostgreSQL・認証・Edge Functions）/ Python（河川座標データの整形）</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">使用したAPI：</span></div>
                               <div className="!font-normal text-gray-500">・国土交通データプラットフォーム API</div>
-                              <div className="!font-normal text-gray-500">・Open Weather API</div>
+                              <div className="!font-normal text-gray-500">・川の防災情報（河川水位データ）</div>
+                              <div className="!font-normal text-gray-500">・Open-Meteo / OpenWeather / WeatherAPI</div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">サイト：</span><br /><a href="https://weather-for-anglers.netlify.app/" target="_blank" rel="noopener noreferrer" className="!font-normal text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors">https://weather-for-anglers.netlify.app/</a></div>
                             </>
                           )
                           : w.title.toLowerCase().includes('weather')
                           ? (
                             <>
-                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">手軽に都市名を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。</span></div>
+                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">手軽に川の名称を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。私自身が渓流を行うため、川ごとの天気やライブカメラが手元で分かるアプリを作成したいと思い、制作。</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行なった。</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">使用したAPI：</span></div>
                               <div className="!font-normal text-gray-500">・Open-MeteoのGeocoding API</div>
