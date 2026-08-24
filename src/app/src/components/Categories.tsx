@@ -121,7 +121,7 @@ export function Categories() {
                           ? (
                             <>
                               <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">釣り人は釣行時の天気や川の水位を気にする習慣があります。釣り人達にとって、釣行時に天気と水位が分かるアプリがあるとより有意義な釣行ができるのではと思ったことがきっかけで制作しました。</span></div>
-                              <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">既に公開されている他社アプリを検証。総合的に不足してい要素を付与。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">既に公開されている他社アプリを検証。総合的に不足している要素を付与。</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">工夫した点：</span><br /><span className="!font-normal text-gray-500">全国の河川の名称をデータベースから収集する為に国土交通データプラットフォームAPIから抽出。各河川のデータ（川名、都道府県、水系名など）を基に、より正確なライブカメラの個別ページ、または該当地域のカメラ一覧ページへと正しく遷移できるようにURLの生成ロジック（スクレイピングやAPI呼び出し・検索URLの組み立て）を工夫。各河川の前後3日間の天気のみをリアルタイムに取得する点に切り替えてUIデザインを構築。</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">使用したAPI：</span></div>
                               <div className="!font-normal text-gray-500">・国土交通データプラットフォーム API</div>
@@ -138,8 +138,19 @@ export function Categories() {
                               <div className="!font-normal text-gray-500">・国土地理院のジオコーディングAPI</div>
                             </>
                           )
+                          : w.title.toLowerCase().includes('e-commerce')
+                          ? (
+                            <>
+                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">アパレル・ライフスタイルブランド「めるげん//賢志」様からのご依頼で、ShopifyによるECサイトを実装しました。衣類とライフプロダクトの2カテゴリに加え、ブランドの世界観を伝える読み物コンテンツ（Journal）を持つ構成で、多言語・多通貨での販売にも対応しています。既存テーマの標準レイアウトでは表現しきれないブランド表現の部分を、Liquidのカスタマイズで実現することを目的としました。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">同ジャンルのアパレルECを複数調査し、商品一覧・商品詳細・読み物コンテンツへの導線を比較。依頼主の要望と既存テーマの標準機能との差分を洗い出し、テーマの標準機能で満たせる範囲（商品管理、絞り込み、決済、多通貨対応）と、独自実装が必要な範囲（トップページとJournalのビジュアル構成）を切り分けた上で着手しました。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">苦労した点：</span><br /><span className="!font-normal text-gray-500">トップページとJournalの記事内で、画像・動画が規則的なグリッドに収まらない配置を求められた点です。段組みが記事ごとに変わり、動画と画像が混在するため、既存テーマのセクションをそのまま使うことができませんでした。さらにPCとスマートフォンで意図した見え方を保つ必要があり、ブレイクポイントごとに要素の並び順とアスペクト比を制御するレスポンシブ調整に最も時間を要しました。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">工夫した点：</span><br /><span className="!font-normal text-gray-500">不規則な配置をその場限りのハードコーディングで終わらせず、Liquidのセクション／ブロックschemaを設計し、管理画面から画像・動画の差し替えや並び替えができる形で実装しました。これにより、依頼主が納品後も自分でトップページと記事の構成を更新できる状態になっています。実際に運用が継続され、記事が追加され続けていることが、この設計の成果だと考えています。レイアウトはCSS Gridで組み、SP表示では並び順を再定義することで、どの構成でも崩れない実装にしました。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">使用技術：</span><br /><span className="!font-normal text-gray-500">Shopify / Liquid / HTML / CSS（Grid・Flexbox）/ JavaScript</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">サイト：</span><br /><a href="https://www.mergenkenji.com/" target="_blank" rel="noopener noreferrer" className="!font-normal text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors">https://www.mergenkenji.com/</a></div>
+                            </>
+                          )
                           : undefined,
-                        titleClassName: w.title.toLowerCase().includes('anglers') || w.title.toLowerCase().includes('weather')
+                        titleClassName: w.title.toLowerCase().includes('anglers') || w.title.toLowerCase().includes('weather') || w.title.toLowerCase().includes('e-commerce')
                           ? 'underline decoration-[1px] underline-offset-4'
                           : undefined,
                       };

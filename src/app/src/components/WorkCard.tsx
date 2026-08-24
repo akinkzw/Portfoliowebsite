@@ -238,11 +238,11 @@ export function WorkCard({
                 />
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  isAccordionOpen ? 'max-h-[500px] opacity-100 mt-3' : 'max-h-0 opacity-0'
+                className={`transition-all duration-300 ease-in-out ${
+                  isAccordionOpen ? 'max-h-[400px] opacity-100 mt-3' : 'max-h-0 opacity-0 overflow-hidden'
                 }`}
               >
-                <div className="text-sm text-gray-600 leading-relaxed">
+                <div className="text-sm text-gray-600 leading-relaxed max-h-[400px] overflow-y-auto pr-1">
                   {accordionText}
                 </div>
               </div>
