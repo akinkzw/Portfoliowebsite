@@ -334,9 +334,12 @@ export function CategoryPage() {
                     </>
                   ) : work.title.toLowerCase().includes('fortune cookie') ? (
                     <>
-                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">占いやメッセージが記載されたフォーチュンクッキーをアプリにて制作。 手軽に手元のスマフォ・デスクトップで今日の占い・運を楽しむことを目的に設計。</span></p>
+                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">占いやメッセージが記載されたフォーチュンクッキーをアプリにて制作。手軽に手元のスマフォ・デスクトップで今日の占い・運を楽しむことを目的に設計。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">様々な占いアプリを検証。実際に試した中で、よりシンプルで簡素な操作性のあるUIが適切と判断。</span></p>
-                      <p className="mt-3"><span className="font-bold text-gray-800">使用したAPI：</span><br /><span className="font-normal text-gray-500">特になし。自身で名言や諺などを調べて、一つずつ選定して設置。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">工夫した点：</span><br /><span className="font-normal text-gray-500">クッキーをクリックすると割れてメッセージが現れる演出を実装し、「引く」という体験そのものを楽しめるUIにしました。抽選部分はランダム選出のロジックを自作し、メッセージデータは型定義を付けて管理することで、文言の追加・修正時に構造の崩れが起きないようにしています。外部APIに依存しない構成のため、通信状態にかかわらず即座に結果が表示される点も意図した設計です。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">使用したAPI：</span><br /><span className="font-normal text-gray-500">特になし。名言や諺などを自身で調べ、一つずつ選定して設置。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">使用技術：</span><br /><span className="font-normal text-gray-500">React / TypeScript / HTML / CSS</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">サイト：</span><br /><a href="https://fortune-cookie.figma.site/" target="_blank" rel="noopener noreferrer" className="font-normal text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors">https://fortune-cookie.figma.site/</a></p>
                     </>
                   ) : work.title.toLowerCase().includes('weather') ? (
                     <>
