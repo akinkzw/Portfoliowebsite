@@ -340,9 +340,12 @@ export function CategoryPage() {
                     </>
                   ) : work.title.toLowerCase().includes('weather') ? (
                     <>
-                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">手軽に川の名称を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。私自身が渓流を行うため、川ごとの天気やライブカメラが手元で分かるアプリを作成したいと思い、制作。</span></p>
+                      <p><span className="font-bold text-gray-800">制作の意図：</span><br /><span className="font-normal text-gray-500">手軽に都市名を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">検証：</span><br /><span className="font-normal text-gray-500">WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行なった。</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">工夫した点：</span><br /><span className="font-normal text-gray-500">都市名の入力欄にインクリメンタルサーチを実装し、入力中の文字列に応じて候補地名をドロップダウンで複数表示するようにしました。同名・類似名の地名が国内外に複数存在するため、候補には地域情報を併せて表示し、ユーザーが目的の地点を取り違えずに選択できる設計にしています。さらにOpen-Meteoと国土地理院の2つのジオコーディングを併用することで、海外の都市名と日本国内の細かい地名の双方に対応させました。</span></p>
                       <p className="mt-3"><span className="font-bold text-gray-800">使用したAPI：</span><br /><span className="font-normal text-gray-500">・Open-MeteoのGeocoding API<br />・国土地理院のジオコーディングAPI</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">使用技術：</span><br /><span className="font-normal text-gray-500">React / JavaScript / HTML / CSS</span></p>
+                      <p className="mt-3"><span className="font-bold text-gray-800">サイト：</span><br /><a href="https://clever-pasteur-3ecdcf.netlify.app/" target="_blank" rel="noopener noreferrer" className="font-normal text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors">https://clever-pasteur-3ecdcf.netlify.app/</a></p>
                     </>
                   ) : work.title.toLowerCase().includes('e-commerce') ? (
                     <>
