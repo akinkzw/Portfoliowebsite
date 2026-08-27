@@ -120,13 +120,15 @@ export function Categories() {
                         accordionText: w.title.toLowerCase().includes('anglers')
                           ? (
                             <>
-                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">手軽に川の名称を入れる事で天気が分かるアプリを作成したかったこと、APIの機能を理解することが目的。私自身が渓流を行うため、川ごとの天気やライブカメラが手元で分かるアプリを作成したいと思い、制作しました。</span></div>
-                              <div className="mt-3"><span className="!font-bold text-gray-800">検証：</span><br /><span className="!font-normal text-gray-500">Supabase の Magic Link 認証とお気に入り機能を実装し、ユーザーが普段通う河川を保存して次回すぐ確認できるようにしました。外部 API の呼び出しは Supabase Edge Functions 側にまとめ、API キーをクライアントに露出させない構成にしています。RLS ポリシーを設定し、お気に入りデータが他ユーザーから参照されないようにしました。WeatherAPIでは日本国内の天気情報が限定的だった為、Open-MeteoのGeocoding APIに切り替える対策を行ないました。</span></div>
+                              <div><span className="!font-bold text-gray-800">制作の意図：</span><br /><span className="!font-normal text-gray-500">手軽に川の名称を入れるだけで天気が分かるアプリを作りたかったこと、API連携の仕組みを理解することが目的です。私自身が渓流釣りをするため、川ごとの天気やライブカメラ、気象警報が手元で分かるアプリを作りたいと考え、制作しました。</span></div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">工夫した点・技術的な取り組み：</span><br /><span className="!font-normal text-gray-500">SupabaseのMagic Link認証とお気に入り機能を実装し、ユーザーが普段通う河川を保存して次回すぐ確認できるようにしました。外部APIの呼び出しはSupabase Edge Functions側にまとめ、APIキーをクライアントに露出させない構成にしています。RLSポリシーにより、お気に入りデータが他ユーザーから参照されないようにしました。</span></div>
+                              <div className="mt-2"><span className="!font-normal text-gray-500">安全性への配慮として、気象庁の防災情報フィードから各地域のリアルタイムな気象警報を取得し、川の一覧・詳細に表示する機能を実装しました。実装にあたり、気象庁の一部データ配信が更新停止していることを実データの検証から発見し、リアルタイム性が担保された正しい配信経路（防災情報XML）に切り替えました。警報データが取得できない場合は「警報なし」と誤表示せず「不明」として扱い、公式サイトでの確認を促す設計にすることで、利用者を誤解させないことを重視しました。</span></div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">使用技術：</span><br /><span className="!font-normal text-gray-500">React 18 / TypeScript / Vite / Tailwind CSS v4 / Supabase（PostgreSQL・認証・Edge Functions）/ Python（河川座標データの整形）</span></div>
-                              <div className="mt-3"><span className="!font-bold text-gray-800">使用したAPI：</span></div>
-                              <div className="!font-normal text-gray-500">・国土交通データプラットフォーム API</div>
-                              <div className="!font-normal text-gray-500">・川の防災情報（河川水位データ）</div>
-                              <div className="!font-normal text-gray-500">・Open-Meteo / OpenWeather / WeatherAPI</div>
+                              <div className="mt-3"><span className="!font-bold text-gray-800">使用したAPI・データ：</span></div>
+                              <div className="!font-normal text-gray-500">・気象庁 防災情報XML（気象警報・注意報）</div>
+                              <div className="!font-normal text-gray-500">・国土地理院 地名検索API（河川座標の取得）</div>
+                              <div className="!font-normal text-gray-500">・Open-Meteo（気象データ・Geocoding）/ OpenWeather</div>
+                              <div className="!font-normal text-gray-500">・国土交通省 川の防災情報（水位・ライブカメラの公式情報へ誘導）</div>
                               <div className="mt-3"><span className="!font-bold text-gray-800">サイト：</span><br /><a href="https://weather-for-anglers.netlify.app/" target="_blank" rel="noopener noreferrer" className="!font-normal text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors">https://weather-for-anglers.netlify.app/</a></div>
                             </>
                           )
