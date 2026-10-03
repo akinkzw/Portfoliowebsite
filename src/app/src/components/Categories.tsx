@@ -32,11 +32,11 @@ const mockCategories: CategoryData[] = [
     slug: "web",
     works: [
       {
-        title: "LINEリッチメッセージ",
-        description: "週末企画・LINEリッチメッセージ",
+        title: "Built an E-Commerce Website",
+        description: "Shopify による EC サイトの実装",
         imageUrl: "",
         imageUrls: [],
-        tags: ["line", "banner"],
+        tags: ["shopify", "ec"],
       },
     ],
   },
